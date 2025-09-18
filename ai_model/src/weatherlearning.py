@@ -21,8 +21,10 @@ PROPERTY_ID = config["property_id"]
 WEATHER_API_KEY = config["weather_api_key"]
 LOCATION = config["location"]
 
-CSV_FILE_PATH = "../data/weather.csv"
-MODEL_FILE_PATH = "../model/rain_predictor_model.joblib"
+# Use absolute paths based on script location
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+CSV_FILE_PATH = os.path.join(os.path.dirname(SCRIPT_DIR), "data", "weather.csv")
+MODEL_FILE_PATH = os.path.join(os.path.dirname(SCRIPT_DIR), "model", "rain_predictor_model.joblib")
 
 # ==========================
 # Arduino IoT Cloud OAuth
@@ -92,10 +94,10 @@ def train_model():
 
     df = pd.read_csv(CSV_FILE_PATH)
 
-    # Create target variable
+   
     df['did_it_rain'] = (df['precipitation_sum'] > 0).astype(int)
 
-    # Create lagged features for prediction (previous day)
+    
     df['last_day_temp_max'] = df['temperature_2m_max'].shift(1)
     df['last_day_temp_min'] = df['temperature_2m_min'].shift(1)
     df['last_day_rain'] = df['did_it_rain'].shift(1)
