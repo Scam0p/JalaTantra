@@ -5,17 +5,29 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "convert:csv": "node tools/csv-to-xlsx.js"
   },
   "dependencies": {
-  "react": "18.2.0",
-  "react-dom": "18.2.0",
-  "mqtt": "4.3.7"
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^5.1.0",
+    "google-auth-library": "^9.0.0",
+    "mqtt": "4.3.7",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1"
   },
   "devDependencies": {
-  "autoprefixer": "10.4.14",
-  "postcss": "8.4.24",
-  "tailwindcss": "^3.4.8",
-  "vite": "5.1.0"
+    "@vitejs/plugin-react": "^4.0.0",
+    "autoprefixer": "10.4.14",
+    "postcss": "8.4.24",
+    "tailwindcss": "^3.4.8",
+    "vite": "5.1.0"
+  },
+  "optionalDependencies": {
+    "xlsx": "^0.18.5"
   }
 }
